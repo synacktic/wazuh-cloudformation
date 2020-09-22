@@ -28,7 +28,7 @@ extract_certs(){
   echo $ssh_password >> pass
 
   while [ ! -f /home/wazuh/certs.zip ]; do
-    sshpass -f pass scp -o "StrictHostKeyChecking=no" wazuh@10.0.2.124:/home/wazuh/certs.zip /home/wazuh/ 2> /dev/null
+    sshpass -f pass scp -o "StrictHostKeyChecking=no" wazuh@10.16.2.124:/home/wazuh/certs.zip /home/wazuh/ 2> /dev/null
     sleep 10
   done
   echo "Extract certs " >> /tmp/deploy.log
@@ -110,9 +110,9 @@ node.master: false
 node.data: false
 node.ingest: false
 discovery.seed_hosts:
-  - "10.0.2.123"
-  - "10.0.2.124"
-  - "10.0.2.125"
+  - "10.16.2.123"
+  - "10.16.2.124"
+  - "10.16.2.125"
 EOF
 
 echo "network.host: $eth0_ip" >> /etc/elasticsearch/elasticsearch.yml
