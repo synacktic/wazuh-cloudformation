@@ -178,7 +178,7 @@ start_elasticsearch(){
 
 create_bootstrap_user(){
     echo "Creating elk user with password $ssh_password" >> /tmp/deploy.log
-    echo $ssh_password | /usr/share/elasticsearch/bin/elasticsearch-keystore add -x 'bootstrap.password'
+    echo $ssh_password | /usr/share/elasticsearch/bin/elasticsearch-keystore add -f -x 'bootstrap.password'
     systemctl restart elasticsearch
     sleep 60
     echo 'Done' >> /tmp/deploy.log
@@ -248,7 +248,7 @@ main(){
     create_bootstrap_user
     set_security
     start_elasticsearch
-    #load_template
+    load_template
     add_wazuh_user
     disable_elk_repos
 }
