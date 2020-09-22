@@ -156,7 +156,7 @@ EOF
 enable_elasticsearch(){
     echo "Enabling elasticsearch..." >> /tmp/deploy.log
     systemctl enable elasticsearch
-    if [ $? -eq0 ]; then
+    if [ $? -eq 0 ]; then
         echo "Elasticsearch enabled." >> /tmp/deploy.log
     else
         echo "Could not enable Elasticsearch" >> /tmp/deploy.log
